@@ -5,11 +5,11 @@ section .data
 
 section .text
 _main:
-    mov rcx, 1
+    mov rbx, 0
     call next
 next:
-    inc rcx
-    cmp rcx, 10
+    inc rbx
+    cmp rbx, 11
     jne printHello
     call exit
 
@@ -19,9 +19,8 @@ printHello:
     mov rsi, hello
     mov rdx, 15
     syscall
-    ret
+    call next
 exit:
     mov rax, 0x3c
     mov rdi, 1
     syscall
-
