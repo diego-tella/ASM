@@ -1,19 +1,19 @@
-                                                                                                 
-global _main
+global _start
 
 section .data
-    hello: db 'Hello, World',0xa ; define variable hello (0x0a is the \n byte)
+    message: db "Hello, World!",10
+    size: equ $ - message
 
 section .text
-_main:
-    mov eax, 0x4 ; mov eax 0x4 to define the syscal write
-    mov ebx, 0x1 ; mob ebx 0x1 the file descriptor
-    mov ecx, hello ;variable
-    mov edx, 15 ; mov edx the lenght of the variable
-    int 0x80 ; call syscall (in i386)
-    mov eax, 1 ; to call exit syscall
-    int 0x80 ; call syscall (in i386)
 
+_start:
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, message
+    mov rdx, size
+    syscall
 
-; nasm -f elf32 helloworld.asm    
-; ld helloworld.o -o helloWorld --entry _main -m elf_i386
+_end:
+    mov rax, 0x3c
+    mov rdi, 0
+    syscall
