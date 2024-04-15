@@ -1,4 +1,5 @@
 ;this program will get the first argument and print it. (x64)
+;when you pass an argument, it goes to the stack. This program is a demonstration of how it works. It gets the number o args in the stack, verify if there is args and then get the arg in the stack.
 section .data
     arg_error: db "Pass one argument!",10
     size_arg: equ $ - arg_error
@@ -11,8 +12,8 @@ section .text
     global _start
 
 _start:
-    mov r8, [rsp]
-    cmp r8, 2
+    mov r8, [rsp] ;number of arguments. By deault it is in the stack
+    cmp r8, 2 ;check if there is 2 arguments. (first one is the program itself)
     jne _argument_error
     mov rsi, arg_info
     mov rdx, size_arg_info
