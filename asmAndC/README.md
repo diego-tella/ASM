@@ -6,4 +6,4 @@ gcc file.c pushbro.o
 ./file.out
 ```
 
-I am linking the assembly code to the C code and trying to exploit the format string vulnerability printing 0x41 on the stack!
+I am linking the assembly code to the C code and trying to exploit the format string vulnerability printing 0x41 from the stack!
